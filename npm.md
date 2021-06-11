@@ -98,7 +98,7 @@ added 50 packages from 37 contributors and audited 50 packages in 4.266s
 found 0 vulnerabilities
 ```
 
-Note the creation of package-lock.json. Also see how dependencies is added to package.json
+Note the creation of package-lock.json. It is there to allow reproduction of exact builds. Also see how dependencies is added to package.json
 
 ```
 $ ls
@@ -152,3 +152,18 @@ $ cat package.json
   }
 }
 ```
+
+You can also install global packages (i.e. not restricted to this project)
+
+```
+$ npm install -g eslint
+$ npm install -g eslint
+/Users/sasank/.nvm/versions/node/v14.17.0/bin/eslint -> /Users/sasank/.nvm/versions/node/v14.17.0/lib/node_modules/eslint/bin/eslint.js
++ eslint@7.28.0
+added 116 packages from 68 contributors in 6.895s
+$ cd ~
+$ $ eslint --version
+v7.28.0
+```
+
+You can also publish packages to npm server, but that's for another day.
