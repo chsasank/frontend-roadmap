@@ -121,3 +121,34 @@ $ cat package.json
 }
 ```
 
+You can also install dev only dependencies
+
+```
+$ npm install --save-dev prettier
+npm WARN my_project@1.0.0 No description
+npm WARN my_project@1.0.0 No repository field.
+
++ prettier@2.3.1
+added 1 package from 1 contributor and audited 51 packages in 1.676s
+found 0 vulnerabilities
+
+$ cat package.json 
+{
+  "name": "my_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.1"
+  }
+}
+```
