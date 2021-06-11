@@ -84,3 +84,40 @@ $ npm start
 > node index.js
 
 ```
+
+## Dependencies
+
+```
+$ npm install express
+npm notice created a lockfile as package-lock.json. You should commit this file.
+npm WARN my_project@1.0.0 No description
+npm WARN my_project@1.0.0 No repository field.
+
++ express@4.17.1
+added 50 packages from 37 contributors and audited 50 packages in 4.266s
+found 0 vulnerabilities
+```
+
+Note the creation of package-lock.json. Also see how dependencies is added to package.json
+
+```
+$ ls
+index.js                node_modules            package-lock.json       package.json
+$ cat package.json 
+{
+  "name": "my_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
+```
+
