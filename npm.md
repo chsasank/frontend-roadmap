@@ -5,9 +5,9 @@ A great reference: https://www.freecodecamp.org/news/what-is-npm-a-node-package-
 NPM is like pip for python or gem for ruby.
 
 
-## Hands on
+## Package.json
 
-```
+```bash
 $ mkdir my_project
 $ cd my_project/
 $ npm init
@@ -48,4 +48,39 @@ About to write to /Users/sasank/projects/qure/frontend-dev/npm/my_project/packag
 Is this OK? (yes) yes
 $ ls
 package.json
+```
+
+## Scripts
+
+Run your scripts
+
+```bash
+$ cat package.json 
+{
+  "name": "my_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
+$ cat index.js 
+const http = require('http');
+
+const requestListener = function (req, res) {
+  res.writeHead(200);
+  res.end('Hello, World!');
+}
+
+const server = http.createServer(requestListener);
+server.listen(8080);
+$ npm start
+
+> my_project@1.0.0 start /Users/sasank/projects/qure/frontend-dev/npm/my_project
+> node index.js
+
 ```
