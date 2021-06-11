@@ -59,3 +59,52 @@ info All dependencies
 
 Yarn creates yarn.lock instead as opposed to npm's package-lock.json
 
+## Scripts
+
+Add scripts in package.json.
+
+```
+$ cat package.json 
+{
+  "name": "my_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "whatever": "echo \"whatever man, that's like your opinion\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.3.1"
+  }
+}
+
+$ yarn start
+yarn run v1.22.10
+$ node index.js
+
+$ yarn test
+yarn run v1.22.10
+$ echo "Error: no test specified" && exit 1
+Error: no test specified
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
+
+To run custom commands
+
+```
+$ yarn run whatever
+yarn run v1.22.10
+$ echo whatever man, that's like your opinion
+whatever man, that's like your opinion
+✨  Done in 0.05s.
+```
+
+
