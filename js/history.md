@@ -1,3 +1,8 @@
+---
+parent: JavaScript
+nav_order: 2
+---
+
 # History of Javascript (until 2017)
 
 [Reference](https://medium.com/the-node-js-collection/modern-javascript-explained-for-dinosaurs-f695e9747b70). This page is my notes of the article.

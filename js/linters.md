@@ -1,3 +1,8 @@
+---
+parent: JavaScript
+nav_order: 5
+---
+
 # Linters and Formatters
 
 ## Prettier

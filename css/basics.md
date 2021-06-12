@@ -1,3 +1,8 @@
+---
+parent: CSS
+nav_order: 1
+---
+
 # CSS Basics
 
 CSS (Cascading Style Sheets) is the code that styles web content. We'll answer questions like: How do I make text red? How do I make content display at a certain location in the (webpage) layout? How do I decorate my webpage with background images and colors? [Reference](https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics)

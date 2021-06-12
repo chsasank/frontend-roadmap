@@ -1,6 +1,6 @@
 ---
 layout: default
-title: JavaScript
+title: Package Managers
 has_children: true
 has_toc: true
 ---

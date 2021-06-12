@@ -1,3 +1,8 @@
+---
+parent: Package Managers
+nav_order: 3
+---
+
 # NPX - Node.js Package Runner
 
 Gotta love [freecodecamp](https://www.freecodecamp.org/news/npm-vs-npx-whats-the-difference/) for great tutorial.

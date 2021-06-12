@@ -1,3 +1,8 @@
+---
+parent: Package Managers
+nav_order: 2
+---
+
 # Yarn - Yet Another Resource Negotiator
 
 Just like NPM, but [apparently was designed](https://www.geeksforgeeks.org/difference-between-npm-and-yarn/) to fix its performance and security concerns. There's not much difference really.

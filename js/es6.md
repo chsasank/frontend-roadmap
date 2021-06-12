@@ -1,3 +1,8 @@
+---
+parent: JavaScript
+nav_order: 3
+---
+
 # ECMAScript or ES6
 
 ECMAScript or ES are revisions to javascript language. ES6 is the most important revision we need to know about. Here are some of the important new features added in ES6. [Reference](https://www.w3schools.com/js/js_es6.asp)

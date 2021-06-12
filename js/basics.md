@@ -1,12 +1,11 @@
 ---
-layout: default
 parent: JavaScript
 nav_order: 1
 ---
 
 # Basics of JS
 
-Good cheat sheet: https://learnxinyminutes.com/docs/javascript/
+[Reference](https://learnxinyminutes.com/docs/javascript/)
 
 ## Comments and stuff
 
