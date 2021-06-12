@@ -139,3 +139,5 @@ h1 {
 ```
 
 Open index.html in your browser and see colorful page.
+
+![image](https://user-images.githubusercontent.com/9305875/121774005-5289d200-cb9d-11eb-9f93-0e0e238fff32.png)
