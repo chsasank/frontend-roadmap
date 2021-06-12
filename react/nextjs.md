@@ -5,7 +5,7 @@ nav_order: 2
 
 # Next.js
 
-Next.js is framework for react which itself is a UI framework. It comes with all the features needed for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more.
+Next.js is framework for react which itself is a UI framework. It comes with all the features needed for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. [Reference](https://nextjs.org/learn/basics/create-nextjs-app)
 
 Create a new next.js app using
 
