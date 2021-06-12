@@ -5,6 +5,8 @@ nav_order: 2
 
 # Sass
 
+{: .no_toc }
+
 Sass (or Syntactically Awesome Style Sheets) is CSS extension language that adds features such as variables, nesting, mixins and more. Sass is very similar to css. [Reference](https://learnxinyminutes.com/docs/sass/).
 
 ## Install and usage
