@@ -139,7 +139,6 @@ export default function App({ Component, pageProps }) {
 
 By default, next.js pre-renders every page i.e. HTML for every page is generated in advance instead of having client generate everything using js (like in standard react app). This helps in better performance and SEO. 
 
-![](https://nextjs.org/static/images/learn/data-fetching/pre-rendering.png)
 
 Next.js can do two forms of pre-rendering: static generation or service-side rendering. You can also choose type of rendering per page.
 
@@ -189,8 +188,6 @@ export default function Home({ allPostsData }) {
 }
 ```
 
-![](https://nextjs.org/static/images/learn/data-fetching/index-page.png)
-
 ### Server-side rendering
 
 Static generation will not work if you can't pre-render page ahead of user's request. So, we'll use server-side rendering to fetch the data at the request time. Just like static generation, we need to export async function `getServerSideProps`.
@@ -206,13 +203,10 @@ export async function getServerSideProps(context) {
 }
 ```
 
-![](https://nextjs.org/static/images/learn/data-fetching/server-side-rendering-with-data.png)
-
 ## Dynamic routes
 
 We've learnt to add specific pages but what if we want to add dynamic routes which depend on data say `/posts/<id>`. To do this we create a file `pages/posts/[id].js` and implement `getStaticPaths` and `getStaticProps`.
 
-![](https://nextjs.org/static/images/learn/dynamic-routes/how-to-dynamic-routes.png)
 
 ```js
 // pages/posts/[id].js
