@@ -208,3 +208,43 @@ export async function getServerSideProps(context) {
 
 ![](https://nextjs.org/static/images/learn/data-fetching/server-side-rendering-with-data.png)
 
+## Dynamic routes
+
+We've learnt to add specific pages but what if we want to add dynamic routes which depend on data say `/posts/<id>`. To do this we create a file `pages/posts/[id].js` and implement `getStaticPaths` and `getStaticProps`.
+
+![](https://nextjs.org/static/images/learn/dynamic-routes/how-to-dynamic-routes.png)
+
+```js
+// pages/posts/[id].js
+import Layout from '../../components/layout'
+import { getAllPostIds, getPostData } from '../../lib/posts'
+
+export async function getStaticPaths() {
+  const paths = getAllPostIds()
+  return {
+    paths,
+    fallback: false
+  }
+}
+
+export async function getStaticProps({ params }) {
+  const postData = getPostData(params.id)
+  return {
+    props: {
+      postData
+    }
+  }
+}
+
+export default function Post({ postData }) {
+  return (
+    <Layout>
+      {postData.title}
+      <br />
+      {postData.id}
+      <br />
+      {postData.date}
+    </Layout>
+  )
+}
+```
