@@ -36,7 +36,7 @@ class ShoppingList extends React.Component {
 }
 ```
 
-### Props
+## Props
 
 `props` are properties that are sent to the component. You can use this component inside yet another component. Note how data like name are passed through props.
 
@@ -63,7 +63,7 @@ class Square extends React.Component {
 }
 ```
 
-### State
+## State
 
 You might want to store state of the component and change it on interaction. Here's how you do it
 
@@ -88,7 +88,7 @@ class Square extends React.Component {
 
 Note that you have to `setState` method because react will update and render the child components.
 
-### Moving up the state
+## Moving up the state
 
 If you want the state to be manipulated by a parent object, you should use props and not state! So this is how you 'move up' `Square`'s state to `Board`'s state using props.
 
@@ -155,7 +155,7 @@ class Board extends React.Component {
 
 Note `.slice()` in the `handleClick` function. It creates a copy of our array. We need this is because state should be immutable. If state were mutable, it's very hard to detect and re-render children objects. So, `setState` has to be used instead of mutating the state object.
 
-### Function Components
+## Function Components
 
 Function components are easier and simpler value of writing many components. Here's how `Square` function component looks like:
 

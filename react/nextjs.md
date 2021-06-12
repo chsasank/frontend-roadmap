@@ -5,7 +5,7 @@ nav_order: 2
 
 # Next.js
 
-Next.js is framework for react which itself is a UI framework. It comes with all the features needed for production: ybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more.
+Next.js is framework for react which itself is a UI framework. It comes with all the features needed for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more.
 
 Create a new next.js app using
 
@@ -82,7 +82,7 @@ For metadata of a page, use `Head` component instead of traditional `head`:
 
 ## CSS
 
-You should use css modules to add styling to your components. Here's how you do it. Create css in your component directory ending with `.module.css`
+You should use css modules to add styling to your components. Here's how you do it: create css in your component directory ending with `.module.css`
 
 ```css
 /* components/layout.module.css */
@@ -106,7 +106,7 @@ export default function Layout({ children }) {
 
 This automatically generates css class names so that you don't have to worry about css collisions. Also only minimal amount of css required for each page is loaded.
 
-While css modules are more useful for component-level styles, you can also have global css. Global css can be anywhere, but they have to be imported only in `pages/_app.js`. Create following following files
+While css modules are more useful for component-level styles, you can also have global css. Global css file can be put anywhere, but they have to be imported only in `pages/_app.js`. Create following following files
 
 ```css
 /* styles/global.css */
@@ -134,3 +134,6 @@ export default function App({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
 ```
+
+## Pre-rendering and data fetching
+
