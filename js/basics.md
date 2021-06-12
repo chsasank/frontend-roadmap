@@ -164,9 +164,9 @@ Uncaught ReferenceError: hello is not defined
 
 ### `this` is weird object self-reference
 
+When functions attached to an object are called, they can access the object they're attached to using the `this` keyword.
+
 ```js
-// When functions attached to an object are called, they can access the object
-// they're attached to using the `this` keyword.
 > myObj = {
     myString: "Hello world!",
     myFunc: function(){
@@ -175,8 +175,11 @@ Uncaught ReferenceError: hello is not defined
 };
 > myObj.myFunc();
 'Hello world!'
+```
 
-// `this` depends on how function is called, not where it is defined
+`this` depends on how function is called, not where it is defined.
+
+```js
 > var myFunc = myObj.myFunc;
 > myFunc();
 undefined
@@ -188,5 +191,79 @@ undefined
 'HELLO WORLD!'
 ```
 
-### Constructors
+### Constructor
 
+`new` keyword means a new object is created and assigned to `this`.
+
+```
+> var MyConstructor = function(){
+    this.myNumber = 5;
+};
+> myNewObj = new MyConstructor();
+MyConstructor { myNumber: 5 }
+```
+
+## Prototypes
+
+Vanilla JS has no classes. Instead it has prototypes which is inheritance and instantiation in one. Every object has a 'prototype'. When you access a property that doesn't exist on the actual object, the interpreter will look up in its prototype.
+
+```js
+> var myObj = {
+    myString: "Hello world!"
+};
+> var myPrototype = {
+    meaningOfLife: 42,
+    myFunc: function(){
+        return this.myString.toLowerCase();
+    }
+};
+> myObj.__proto__ = myPrototype;
+> myObj.meaningOfLife
+42
+> myObj.myFunc()
+'hello world!'
+```
+
+You can set prototype of prototype too. Note how no copying is involved and modifying myPrototype is directly reflected.
+
+```js
+> myPrototype.__proto__ = {
+    myBoolean: true
+}
+> myObj.myBoolean
+true
+```
+
+`for/in` allows iteration inside prototypes. `hasOwnProperty` checks if key is object's property or 'inherited' from prototype.
+
+```js
+> for (var x in myObj){
+    console.log(x, myObj[x], myObj.hasOwnProperty(x));
+}
+myString Hello world! true
+meaningOfLife 42 false
+myFunc [Function: myFunc] false
+myBoolean true false
+```
+
+`__proto__` might not work in every js implementation. So, standard way of doing things is to add prototype property to constructors.
+
+```js
+> var MyConstructor = function(){
+    this.myName = 5;
+};
+> MyConstructor.prototype = {
+    myNumber: 5,
+    getMyNumber: function(){
+        return this.myNumber;
+    }
+};
+> var myNewObj2 = new MyConstructor();
+> myNewObj2.getMyNumber();
+6
+// this creates new key in our object. Doesn't modify prototype
+> myNewObj2.myNumber = 6
+// yet this works, because of this magic
+> myNewObj2.getMyNumber();
+6
+```
