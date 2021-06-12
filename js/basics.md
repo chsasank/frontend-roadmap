@@ -37,48 +37,52 @@ if (!w) {
 ### Strings
 
 ```js
-> "This is a string".charAt(0);
-'T'
-> "Hello world".substring(0, 5);
-'Hello'
-> "Hello".length;
-5
+"This is a string".charAt(0);
+// = 'T'
+"Hello world".substring(0, 5);
+// = 'Hello'
+"Hello".length;
+// = 5
 ```
 
 ### Arrays, aka list
 
 ```js
-> var myArray = ["Hello", 45, true];
+var myArray = ["Hello", 45, true];
 // index starts at 0 like any sane language. Looking at you, lua.
-> myArray[0]
-'Hello'
+myArray[0];
+// = 'Hello'
+
 // you can push and stuff
-> myArray.push("World");
-4
-> > myArray.pop()
-'World'
+myArray.push("World");
+// = 4
+
+myArray.pop();
+// = 'World'
+
 // size of array
-> myArray.length
-3
+myArray.length;
+// = 3
+
 // Use join to do delimited string joins. very handy.
-> myArray.join(",")
-'Hello,45,true'
+myArray.join(",");
+// = 'Hello,45,true'
 ```
 
 ### Objects, aka dict or map
 
 ```js
 // keys need not be in quotes for sane keys
-> var myObj = {myKey: "myValue", "my other key": 4};
+var myObj = { myKey: "myValue", "my other key": 4 };
 // index either with dot or subscript syntax
-> myObj.myKey
-'myValue'
-> myObj["myKey"]
-'myValue'
-> myObj.anotherKey = "new world"
-'new world'
-> myObj
-{ myKey: 'myValue', 'my other key': 4, anotherKey: 'new world' }
+myObj.myKey;
+// = 'myValue'
+myObj["myKey"];
+// = 'myValue'
+myObj.anotherKey = "new world";
+// = 'new world'
+myObj;
+// = { myKey: 'myValue', 'my other key': 4, anotherKey: 'new world' }
 ```
 
 ## Control flow
@@ -143,23 +147,24 @@ for (var key in myObj) {
 ## Functions
 
 ```js
-> function myFunction(thing) {
+function myFunction(thing) {
   var hello = 3;
   world = 2;
   return thing.toUpperCase();
 }
-> myFunction("foo");
-FOO
+myFunction("foo");
+// = FOO
 
 // js has function scope
-> hello
-Uncaught ReferenceError: hello is not defined
-> world
-2
+hello;
+// = Uncaught ReferenceError: hello is not defined
+world;
+// = 2
 
 // functions are first class objects
-> myObj = { custom: { whatever: myFunction } };
-> myObj.custom.whatever("yo");
+myObj = { custom: { whatever: myFunction } };
+myObj.custom.whatever("yo");
+// YO
 ```
 
 ### `this` is weird object self-reference
@@ -167,40 +172,42 @@ Uncaught ReferenceError: hello is not defined
 When functions attached to an object are called, they can access the object they're attached to using the `this` keyword.
 
 ```js
-> myObj = {
-    myString: "Hello world!",
-    myFunc: function(){
-        return this.myString;
-    }
+myObj = {
+  myString: "Hello world!",
+  myFunc: function () {
+    return this.myString;
+  },
 };
-> myObj.myFunc();
-'Hello world!'
+myObj.myFunc();
+// = 'Hello world!'
 ```
 
 `this` depends on how function is called, not where it is defined.
 
 ```js
-> var myFunc = myObj.myFunc;
-> myFunc();
-undefined
-> var myOtherFunc = function(){
-    return this.myString.toUpperCase();
+var myFunc = myObj.myFunc;
+myFunc();
+
+// = undefined
+var myOtherFunc = function () {
+  return this.myString.toUpperCase();
 };
-> myObj.myOtherFunc = myOtherFunc;
-> myObj.myOtherFunc();
-'HELLO WORLD!'
+myObj.myOtherFunc = myOtherFunc;
+myObj.myOtherFunc();
+// = 'HELLO WORLD!'
 ```
 
 ### Constructor
 
 `new` keyword means a new object is created and assigned to `this`.
 
-```
-> var MyConstructor = function(){
-    this.myNumber = 5;
+```js
+var MyConstructor = function () {
+  this.myNumber = 5;
 };
-> myNewObj = new MyConstructor();
-MyConstructor { myNumber: 5 }
+myNewObj = new MyConstructor();
+myNewObj;
+// = MyConstructor { myNumber: 5 }
 ```
 
 ## Prototypes
@@ -208,62 +215,63 @@ MyConstructor { myNumber: 5 }
 Vanilla JS has no classes. Instead it has prototypes which is inheritance and instantiation in one. Every object has a 'prototype'. When you access a property that doesn't exist on the actual object, the interpreter will look up in its prototype.
 
 ```js
-> var myObj = {
-    myString: "Hello world!"
+var myObj = {
+  myString: "Hello world!",
 };
-> var myPrototype = {
-    meaningOfLife: 42,
-    myFunc: function(){
-        return this.myString.toLowerCase();
-    }
+var myPrototype = {
+  meaningOfLife: 42,
+  myFunc: function () {
+    return this.myString.toLowerCase();
+  },
 };
-> myObj.__proto__ = myPrototype;
-> myObj.meaningOfLife
-42
-> myObj.myFunc()
-'hello world!'
+myObj.__proto__ = myPrototype;
+myObj.meaningOfLife;
+// = 42
+myObj.myFunc();
+// = 'hello world!'
 ```
 
 You can set prototype of prototype too. Note how no copying is involved and modifying myPrototype is directly reflected.
 
 ```js
-> myPrototype.__proto__ = {
-    myBoolean: true
-}
-> myObj.myBoolean
-true
+myPrototype.__proto__ = {
+  myBoolean: true,
+};
+myObj.myBoolean;
+// = true
 ```
 
 `for/in` allows iteration inside prototypes. `hasOwnProperty` checks if key is object's property or 'inherited' from prototype.
 
 ```js
-> for (var x in myObj){
-    console.log(x, myObj[x], myObj.hasOwnProperty(x));
+for (var x in myObj) {
+  console.log(x, myObj[x], myObj.hasOwnProperty(x));
 }
-myString Hello world! true
-meaningOfLife 42 false
-myFunc [Function: myFunc] false
-myBoolean true false
+// = myString Hello world! true
+// = meaningOfLife 42 false
+// = myFunc [Function: myFunc] false
+// = myBoolean true false
 ```
 
 `__proto__` might not work in every js implementation. So, standard way of doing things is to add prototype property to constructors.
 
 ```js
-> var MyConstructor = function(){
-    this.myName = 5;
+var MyConstructor = function () {
+  this.myName = 5;
 };
-> MyConstructor.prototype = {
-    myNumber: 5,
-    getMyNumber: function(){
-        return this.myNumber;
-    }
+MyConstructor.prototype = {
+  myNumber: 5,
+  getMyNumber: function () {
+    return this.myNumber;
+  },
 };
-> var myNewObj2 = new MyConstructor();
-> myNewObj2.getMyNumber();
-6
+var myNewObj2 = new MyConstructor();
+myNewObj2.getMyNumber();
+// = 6
+
 // this creates new key in our object. Doesn't modify prototype
-> myNewObj2.myNumber = 6
+myNewObj2.myNumber = 6;
 // yet this works, because of this magic
-> myNewObj2.getMyNumber();
-6
+myNewObj2.getMyNumber();
+// = 6
 ```
