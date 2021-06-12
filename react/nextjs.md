@@ -137,3 +137,74 @@ export default function App({ Component, pageProps }) {
 
 ## Pre-rendering and data fetching
 
+By default, next.js pre-renders every page i.e. HTML for every page is generated in advance instead of having client generate everything using js (like in standard react app). This helps in better performance and SEO. 
+
+![](https://nextjs.org/static/images/learn/data-fetching/pre-rendering.png)
+
+Next.js can do two forms of pre-rendering: static generation or service-side rendering. You can also choose type of rendering per page.
+
+### Static generation
+
+Static generation can work event if the data for the html has to be fetched from database or file system. You can do this by exporting an async function `getStaticProps` as follows.
+
+```js
+import Head from "next/head";
+import Layout, { siteTitle } from "../components/layout";
+import { getSortedPostsData } from "../lib/posts";
+
+export async function getStaticProps() {
+  const allPostsData = getSortedPostsData();
+  return {
+    props: {
+      allPostsData,
+    },
+  };
+}
+
+export default function Home({ allPostsData }) {
+  return (
+    <Layout home>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
+      <section className={utilStyles.headingMd}>
+        <p>[Your Self Introduction]</p>
+      </section>
+      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
+        <h2 className={utilStyles.headingLg}>Blog</h2>
+        <ul className={utilStyles.list}>
+          {allPostsData.map(({ id, date, title }) => (
+            <li className={utilStyles.listItem} key={id}>
+              {title}
+              <br />
+              {id}
+              <br />
+              {date}
+            </li>
+          ))}
+        </ul>
+      </section>
+    </Layout>
+  );
+}
+```
+
+![](https://nextjs.org/static/images/learn/data-fetching/index-page.png)
+
+### Server-side rendering
+
+Static generation will not work if you can't pre-render page ahead of user's request. So, we'll use server-side rendering to fetch the data at the request time. Just like static generation, we need to export async function `getServerSideProps`.
+
+
+```js
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      // props for your component
+    }
+  }
+}
+```
+
+![](https://nextjs.org/static/images/learn/data-fetching/server-side-rendering-with-data.png)
+
