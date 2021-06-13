@@ -78,3 +78,5 @@ function MyComponent(props) {
   );
 }
 ```
+
+<img width="468" alt="Screenshot 2021-06-13 at 12 23 05" src="https://user-images.githubusercontent.com/9305875/121799337-288de980-cc49-11eb-8356-c8bada42bd16.png">
