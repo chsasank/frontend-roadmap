@@ -79,4 +79,17 @@ function MyComponent(props) {
 }
 ```
 
+Here's how it'll look like:
+
 <img width="468" alt="Screenshot 2021-06-13 at 12 23 05" src="https://user-images.githubusercontent.com/9305875/121799337-288de980-cc49-11eb-8356-c8bada42bd16.png">
+
+You can also extend style by wrapping it in `styled`.
+
+
+```js
+// A new component based on Button, but with some override styles
+const TomatoButton = styled(Button)`
+  color: tomato;
+  border-color: tomato;
+`;
+```
