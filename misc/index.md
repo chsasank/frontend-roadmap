@@ -1,7 +1,7 @@
 ---
 layout: default
-title: CSS
+title: Misc
 has_children: true
 has_toc: true
-nav_order: 0
+nav_order: 100
 ---

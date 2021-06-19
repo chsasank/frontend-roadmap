@@ -22,7 +22,6 @@ $ cat hello.js
 There are 3 basic types in TypeScript
 
 ```ts
-//
 let isDone: boolean = false;
 let lines: number = 42;
 let name: string = "Anders";
